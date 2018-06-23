@@ -1,5 +1,8 @@
 # content-safe
 ##### 内容安全检测，如对接阿里云的图片检测
+
+## 安装
+composer require xing.chen/content-safe dev-master
 提示：可配置为YII中使用
 
 
@@ -45,8 +48,11 @@ Array
 )
  */
 
-
+// 运行示例
 ContentSafeService::checkImage($checkImages);
+//  ------------------------------  下面是附送的使用类 （未包含在包库插件中，喜欢的自己复制过去使用，注意增加命名空间） -----------------------
+
+
 class ContentSafeService
 {
 
@@ -126,10 +132,11 @@ class ContentSafeService
 }
 ```
 
-###  公共配置
+#  公共配置
 
 ```php
 <?php
+// 阿里云
 $config = [
     // TODO 阿里云需开通 AliyunYundunGreenWebFullAccess 的子帐号
     'accessKeyId' => '',
@@ -141,14 +148,10 @@ $config = [
 ```
 
 
-## 阿里云驱动
+## 使用
 ```php
 <?php 
-// 配置
-];
 \xing\contentSafe\ImageSyncAli::getInstance($config)->create('图片url地址', '唯一的任务id');
-
-];
 ```
 #### 配置到YII中使用
 ```php
