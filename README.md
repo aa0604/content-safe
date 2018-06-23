@@ -10,7 +10,7 @@ try{
     // 检查图片合法性
     $retulst = ContentSafeService::checkImage(['图片绝对路径 1', '图片绝对路径 2']);
     // 检查图片是否合法，是否包含人脸
-    $retulst = ContentSafeService::checkImage(['图片绝对路径 1', '图片绝对路径 2']);
+    $retulst = ContentSafeService::checkFace(['图片绝对路径 1', '图片绝对路径 2']);
 } catch (\Exception $e) {
     exit($e->getMessage());
 }
@@ -91,7 +91,6 @@ class ContentSafeService
      * 检查 图片是否合法，是否包含人脸
      * @param array $imgUrl 图片数组
      * @return array string
-     * @throws ApiCodeException
      * @throws \Exception
      */
     public static function checkFace(array $imgUrl)
