@@ -1,9 +1,12 @@
 # content-safe
 ##### 内容安全检测，如对接阿里云的图片检测
+
 提示：可配置为YII中使用
 
 ### 安装
 composer require xing.chen/content-safe dev-master
+
+
 
 # 使用示例
 ```php
