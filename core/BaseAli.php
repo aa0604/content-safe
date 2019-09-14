@@ -111,4 +111,13 @@ class BaseAli implements BaseInterface
         $request->setAcceptFormat("JSON");
         return $request;
     }
+
+    public function getVideoRequest()
+    {
+
+        $request = new \xing\contentSafe\sdk\aliyunGreen\Green\Request\V20180509\VideoAsyncScanRequest();
+        $request->setMethod("POST");
+        $request->setAcceptFormat("JSON");
+        return $request;
+    }
 }

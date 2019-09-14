@@ -19,7 +19,7 @@
  */
 namespace xing\contentSafe\sdk\aliyunGreen\Green\Request\V20170825;
 
-class VideoAsyncScanResultsRequest extends \RoaAcsRequest
+class VideoAsyncScanResultsRequest extends \xing\contentSafe\sdk\aliyunCore\RoaAcsRequest
 {
 	function  __construct()
 	{

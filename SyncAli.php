@@ -32,6 +32,7 @@ class SyncAli extends BaseAli implements ImageSafeInterFace
         return $suggestion == 'pass' ? static::CHECK_OK : ($suggestion == 'block' ? static::CHECK_SERIOUS : $suggestion);
     }
 
+
     public function getTextInfo(array $contents, $taskIds = '')
     {
         $client = static::getClient();
@@ -135,6 +136,37 @@ class SyncAli extends BaseAli implements ImageSafeInterFace
         }
 
         return $resultImg;
+    }
+
+    public function addVideoTask(array $urls)
+    {
+        $client = static::getClient();
+        $request = static::getVideoRequest();
+        if (count($urls) > 100) throw new \Exception('每次任务不能超过100个');
+        // 组织任务数据
+        $tasks = [];
+        foreach ($urls as $k => $url) {
+            $tasks[] = [
+                'dataId' => $k,
+                'url' => $url,
+            ];
+        }
+        // 封装为JSON
+        $request->setContent(json_encode([
+            "tasks" => $tasks,
+            "scenes" => $this->config['scenes']
+        ]));
+        // 返回鉴别结果
+        $result = [];
+
+        $this->response = $response = $client->getAcsResponse($request);
+
+
+        if (200 != $response->code) throw new \Exception($response->msg, $response->code);
+
+
+
+        return $response->data;
     }
 
     public function faceDetect($image, $type = '0')
