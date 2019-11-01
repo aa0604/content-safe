@@ -21,16 +21,6 @@ use GuzzleHttp\Psr7\Request;
 class SyncAli extends BaseAli implements ImageSafeInterFace
 {
 
-    /**
-     * 另外设置场景
-     * @param array $scenes
-     * @return $this
-     */
-    public function setScenes(array $scenes)
-    {
-        $this->config['scenes'] = $scenes;
-        return $this;
-    }
 
     /**
      * 返回建议
