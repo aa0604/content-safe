@@ -20,10 +20,10 @@ composer require xing.chen/content-safe dev-master
     // 检查图片
     $results = $service
     ->setScenes(['场景1', '场景2']) // 如果yii里配置有，则此行可注释/删除
-    ->getImageInfo($imgUrl);
+    ->getImageInfo(['图片1', '图片2']);
     
     // 检查文字
-    $results = static::getInstance()->getTextInfo([$content]);
+    $results = static::getInstance()->getTextInfo(['文字1', '文字2']);
     foreach ($results as $k => $data) {
         foreach ($data as $label => $v) {
             if ($v == self::CHECK_SERIOUS) '非法';
@@ -35,15 +35,6 @@ composer require xing.chen/content-safe dev-master
             throw new \Exception('图片未包含人脸');
     }
     
-try{
-    // 检查图片合法性
-    $retulst = ContentSafeService::checkImage(['图片绝对路径 1', '图片绝对路径 2']);
-    // 检查图片是否合法，是否包含人脸
-    $retulst = ContentSafeService::checkImage(['图片绝对路径 1', '图片绝对路径 2']);
-} catch (\Exception $e) {
-    exit($e->getMessage());
-}
-
 // 输出结果：
 print_r($retulst);
 /*
