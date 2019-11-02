@@ -39,7 +39,7 @@ class BaseAli implements BaseInterface
         $this->config['scenes'] = $scenes;
         return $this;
     }
-    
+
     /**
      * 配置
      * @param array $config
