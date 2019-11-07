@@ -11,7 +11,6 @@ namespace xing\contentSafe\core;
 use xing\contentSafe\sdk\aliyunGreen\Green\Request\V20170825 as Green;
 use  xing\contentSafe\sdk\aliyunCore\DefaultAcsClient;
 use  xing\contentSafe\sdk\aliyunCore\Profile\DefaultProfile;
-use xing\contentSafe\SyncAli;
 
 class BaseAli implements BaseInterface
 {
@@ -30,17 +29,6 @@ class BaseAli implements BaseInterface
     public $results;
 
     /**
-     * 另外设置场景
-     * @param array $scenes
-     * @return $this
-     */
-    public function setScenes(array $scenes)
-    {
-        $this->config['scenes'] = $scenes;
-        return $this;
-    }
-
-    /**
      * 配置
      * @param array $config
      * @return $this
@@ -52,6 +40,11 @@ class BaseAli implements BaseInterface
         return $class;
     }
 
+    public function setScenes($scenes)
+    {
+        $this->config['setScenes'] = $scenes;
+        return $this;
+    }
     /**
      * 返回统一的消息和代码
      * @return array
@@ -119,6 +112,15 @@ class BaseAli implements BaseInterface
     {
 
         $request = new Green\TextScanRequest();
+        $request->setMethod("POST");
+        $request->setAcceptFormat("JSON");
+        return $request;
+    }
+
+    public function getVideoRequest()
+    {
+
+        $request = new \xing\contentSafe\sdk\aliyunGreen\Green\Request\V20180509\VideoAsyncScanRequest();
         $request->setMethod("POST");
         $request->setAcceptFormat("JSON");
         return $request;
