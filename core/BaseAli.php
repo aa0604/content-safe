@@ -42,7 +42,7 @@ class BaseAli implements BaseInterface
 
     public function setScenes($scenes)
     {
-        $this->config['setScenes'] = $scenes;
+        $this->config['scenes'] = $scenes;
         return $this;
     }
     /**
