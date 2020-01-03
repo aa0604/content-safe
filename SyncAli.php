@@ -63,12 +63,10 @@ class SyncAli extends BaseAli implements ImageSafeInterFace
             if(200 != $taskResult->code) continue;
 
             $sceneResults = $taskResult->results;
-            foreach ($sceneResults as $v) {
+            foreach ($sceneResults as $detail) {
 
-                if (isset($v->details) && !empty($v->details)) foreach ($v->details as $detail) {
-                    $this->results[$key][$detail->label] = $this->getSuggestion($v->suggestion);
-                    $result[$key][$detail->label] = $this->getSuggestion($v->suggestion);
-                }
+                $this->results[$key][$detail->label] = $this->getSuggestion($detail->suggestion);
+                $result[$key][$detail->label] = $this->getSuggestion($detail->suggestion);
             }
         }
 
@@ -138,7 +136,7 @@ class SyncAli extends BaseAli implements ImageSafeInterFace
         return $resultImg;
     }
 
-    public function addVideoTask(array $urls)
+    public function addVideoTask(array $urls, $taskIds = '')
     {
         $client = static::getClient();
         $request = static::getVideoRequest();
