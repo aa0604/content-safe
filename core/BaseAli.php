@@ -12,6 +12,12 @@ use xing\contentSafe\sdk\aliyunGreen\Green\Request\V20170825 as Green;
 use  xing\contentSafe\sdk\aliyunCore\DefaultAcsClient;
 use  xing\contentSafe\sdk\aliyunCore\Profile\DefaultProfile;
 
+/**
+ * Class BaseAli
+ * @property array $config
+ * @property $response
+ * @package xing\contentSafe\core
+ */
 class BaseAli implements BaseInterface
 {
     public $config;
